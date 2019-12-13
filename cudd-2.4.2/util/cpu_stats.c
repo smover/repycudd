@@ -21,7 +21,7 @@ extern int end, etext, edata;
 void
 util_print_cpu_stats(FILE *fp)
 {
-#ifdef BSD
+#ifdef COMPILE_STATS_THAT_DONTWORK_ON_MAC
     struct rusage rusage;
     struct rlimit rlp;
     long text, data, vm_limit, vm_soft_limit;
