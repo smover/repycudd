@@ -181,7 +181,6 @@ BLIBS	= -kL. -kldddmp -kL$(WHERE)/cudd -klcudd -kL$(WHERE)/mtr -klmtr \
 LINTLIBS = ./llib-ldddmp.ln $(WHERE)/cudd/llib-lcudd.ln \
 	$(WHERE)/mtr/llib-lmtr.ln $(WHERE)/st/llib-lst.ln \
 	$(WHERE)/util/llib-lutil.ln
-	
 
 
 lib$(P).a: $(POBJ)
@@ -240,9 +239,7 @@ distclean: clean
 	rm -f $(TARGET) $(TARGETu) lib*.a lib$(P).b llib-l$(P).ln \
 	*.bak *~ tags .gdb_history *.qv *.qx
 
-
-	
-
 libso:
-	gcc -shared $(POBJ) -o ../lib/libdddmp.so
+	gcc -shared -fpic -undefined dynamic_lookup $(POBJ) -o libdddmp.so
+	mv libdddmp.so ../lib/
 

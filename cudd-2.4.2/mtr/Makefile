@@ -96,7 +96,7 @@ clean:
 distclean: clean
 	rm -f $(TARGET) $(TARGETu) lib*.a lib$(P).b llib-l$(P).ln \
 	*.bak *~ tags *.qv *.qx
-	
 
 libso:
-	gcc -shared $(POBJ) -o ../lib/libcuddmtr.so
+	gcc -shared -fpic -undefined dynamic_lookup $(POBJ) -o libcuddmtr.so
+	mv libcuddmtr.so ../lib/

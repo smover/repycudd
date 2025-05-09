@@ -68,5 +68,6 @@ distclean: clean
 	rm -f lib$(P).a lib$(P).b llib-l$(P).ln tags *.bak *~ .pure
 
 libso:
-	gcc -shared $(POBJ) -o ../lib/libcuddutil.so
+	gcc -shared -fpic -undefined dynamic_lookup $(POBJ) -o libcuddutil.so
+	mv libcuddutil.so ../lib/
 

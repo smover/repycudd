@@ -65,7 +65,7 @@ clean:
 
 distclean: clean
 	rm -f lib*.a lib$(P).b llib-l$(P).ln tags *~ *.bak *.qv *.qx
-	
-	
+
 libso:
-	gcc -shared $(POBJ) -o ../lib/libcuddepd.so
+	gcc -shared -fpic -undefined dynamic_lookup  $(POBJ) -o libcuddepd.so
+	mv libcuddepd.so ../lib/
